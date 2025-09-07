@@ -72,53 +72,54 @@
 </main>
 
 <!-- Mensaje flotante de cuenta regresiva -->
-<div id="promo" style="display:none; position:fixed; bottom:12px; left:50%; transform:translateX(-50%); background:#ff9900; color:#000; padding:8px 14px; border-radius:10px; font-size:14px;">
-  ⏳ En <span id="countdown">15</span>s se abrirá Amazon automáticamente...
+<div id="promo" style="display:none; position:fixed; bottom:12px; left:50%; transform:translateX(-50%); background:#ff9900; color:#000; padding:8px 14px; border-radius:10px; font-size:14px; display:flex; align-items:center; gap:10px;">
+  ⏳ En <span id="countdown">30</span>s podrás abrir Amazon
+  <button id="openAmazon" style="display:none; background:#000; color:#ff9900; border:none; border-radius:8px; padding:6px 12px; font-weight:700; cursor:pointer;">Abrir Amazon</button>
 </div>
 
 <script>
 if (window.matchMedia('(display-mode: standalone)').matches) {
-  let countdown = 15;
+  let countdown = 30;
   let countdownTimer;
 
-  // 🔗 enlace oculto que apunta a tu link de Amazon
-  const hiddenLink = document.createElement("a");
-  hiddenLink.href = "https://amzn.to/4gfVQ2M";
-  hiddenLink.target = "_blank";
-  hiddenLink.rel = "noopener noreferrer";
-  hiddenLink.style.display = "none";
-  document.body.appendChild(hiddenLink);
+  const promo = document.getElementById("promo");
+  const countdownEl = document.getElementById("countdown");
+  const openBtn = document.getElementById("openAmazon");
 
   function startCountdown() {
-    const promo = document.getElementById("promo");
-    const countdownEl = document.getElementById("countdown");
-    promo.style.display = "block";
-
+    promo.style.display = "flex";
+    countdown = 30;
     countdownEl.textContent = countdown;
+    openBtn.style.display = "none";
 
     countdownTimer = setInterval(() => {
       countdown--;
       countdownEl.textContent = countdown;
+
       if (countdown === 0) {
         clearInterval(countdownTimer);
-
-        // Simular clic en el link
-        hiddenLink.click();
+        // Mostrar botón cuando termine el contador
+        countdownEl.style.display = "none";
+        openBtn.style.display = "inline-block";
       }
     }, 1000);
   }
 
   function resetIdle() {
     clearInterval(countdownTimer);
-    document.getElementById("promo").style.display = "none";
-    countdown = 15;
+    countdownEl.style.display = "inline";
+    countdownEl.textContent = countdown;
+    openBtn.style.display = "none";
     startCountdown();
   }
 
-  // Detectar actividad
-  ['mousemove','keydown','click','touchstart'].forEach(e =>
-    document.addEventListener(e, resetIdle)
-  );
+  ['mousemove','keydown','click','touchstart'].forEach(e => document.addEventListener(e, resetIdle));
+
+  // Acción al hacer clic en el botón
+  openBtn.addEventListener('click', () => {
+    // Abre la app si está instalada, fallback al navegador
+    window.location.href = "https://amzn.to/4gfVQ2M";
+  });
 
   // Inicia al entrar
   startCountdown();
