@@ -77,49 +77,50 @@
 </div>
 
 <script>
-  // Registrar service worker
-  if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('service-worker.js')
-      .then(()=>console.log('Service worker registrado'))
-      .catch(err=>console.warn('SW fallo', err));
-  }
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  let countdown = 30;
+  let countdownTimer;
 
-  // Lógica de inactividad + redirección
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    let idleTimer, countdownTimer;
-    let countdown = 30;
+  function startCountdown() {
+    const promo = document.getElementById("promo");
+    const countdownEl = document.getElementById("countdown");
+    promo.style.display = "block";
 
-    function startCountdown() {
-      const promo = document.getElementById("promo");
-      const countdownEl = document.getElementById("countdown");
-      promo.style.display = "block";
+    countdownEl.textContent = countdown;
 
-      countdown = 30;
+    countdownTimer = setInterval(() => {
+      countdown--;
       countdownEl.textContent = countdown;
+      if (countdown === 0) {
+        clearInterval(countdownTimer);
 
-      countdownTimer = setInterval(() => {
-        countdown--;
-        countdownEl.textContent = countdown;
-        if (countdown === 0) {
-          clearInterval(countdownTimer);
+        // Intentar abrir en la app
+        window.location.href = "amazon://";
+        
+        // Fallback al navegador si no abre
+        setTimeout(() => {
           window.location.href = "https://amzn.to/4gfVQ2M";
-        }
-      }, 1000);
-    }
-
-    function resetIdle() {
-      clearTimeout(idleTimer);
-      clearInterval(countdownTimer);
-      document.getElementById("promo").style.display = "none";
-      idleTimer = setTimeout(startCountdown, 30000); // 30s sin actividad
-    }
-
-    ['mousemove','keydown','click','touchstart'].forEach(e =>
-      document.addEventListener(e, resetIdle)
-    );
-
-    resetIdle();
+        }, 1000);
+      }
+    }, 1000);
   }
+
+  function resetIdle() {
+    clearInterval(countdownTimer);
+    document.getElementById("promo").style.display = "none";
+    countdown = 30;
+    startCountdown();
+  }
+
+  // Detectar actividad
+  ['mousemove','keydown','click','touchstart'].forEach(e =>
+    document.addEventListener(e, resetIdle)
+  );
+
+  // Inicia al entrar
+  startCountdown();
+}
 </script>
+
 </body>
 </html>
