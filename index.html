@@ -45,15 +45,19 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const shortUrl = 'https://amzn.to/3JQW6ZS';
-            const redirectButton = document.getElementById('redirectButton');
+            const mainContent = document.getElementById('main-content');
 
             // Verifica si la aplicación se abre en modo 'standalone' (como una PWA instalada)
             if (window.matchMedia('(display-mode: standalone)').matches) {
-                // Si está instalada, redirige directamente
-                window.location.href = shortUrl;
-            } else {
-                // Si no está instalada, muestra el contenido para la instalación
-                redirectButton.href = shortUrl;
+                // Simula el clic de un enlace para que el SO abra la app nativa
+                const link = document.createElement('a');
+                link.href = shortUrl;
+                link.target = "_blank";
+                document.body.appendChild(link);
+                link.click();
+                
+                // Oculta el contenido para evitar que se vea la página intermedia
+                mainContent.style.display = 'none';
             }
         });
     </script>
