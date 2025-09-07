@@ -83,6 +83,50 @@
     navigator.serviceWorker.register('service-worker.js')
     .then(()=>console.log('Service worker registrado'))
     .catch(err=>console.warn('SW fallo', err));
+
+<!-- Mensaje flotante de cuenta regresiva -->
+<div id="promo" style="display:none; position:fixed; bottom:12px; left:50%; transform:translateX(-50%); background:#ff9900; color:#000; padding:8px 14px; border-radius:10px; font-size:14px;">
+  ⏳ En <span id="countdown">30</span>s se abrirá Amazon automáticamente...
+</div>
+
+<script>
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    let idleTimer, countdownTimer;
+    let countdown = 30;
+
+    function startCountdown() {
+      const promo = document.getElementById("promo");
+      const countdownEl = document.getElementById("countdown");
+      promo.style.display = "block";
+
+      countdown = 30;
+      countdownEl.textContent = countdown;
+
+      countdownTimer = setInterval(() => {
+        countdown--;
+        countdownEl.textContent = countdown;
+        if (countdown === 0) {
+          clearInterval(countdownTimer);
+          window.location.href = "https://amzn.to/4gfVQ2M";
+        }
+      }, 1000);
+    }
+
+    function resetIdle() {
+      clearTimeout(idleTimer);
+      clearInterval(countdownTimer);
+      document.getElementById("promo").style.display = "none";
+      idleTimer = setTimeout(startCountdown, 30000); // 30s sin actividad
+    }
+
+    ['mousemove','keydown','click','touchstart'].forEach(e =>
+      document.addEventListener(e, resetIdle)
+    );
+
+    resetIdle();
+  }
+</script>
+
   }
 </script>
 </body>
