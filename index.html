@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" sizes="152x152" href="images/icon-512.png">
   <link rel="apple-touch-icon" sizes="120x120" href="images/icon-192.png">
 
-  <!-- Color de barra en iOS -->
+  <!-- Configuración iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Neftdeleon">
@@ -88,9 +88,9 @@
   </footer>
 </main>
 
-<!-- Botón flotante estilizado para PWA -->
+<!-- Botón flotante solo visible en PWA instalada -->
 <a id="openAmazon" href="https://amzn.to/4gfVQ2M" target="_blank" rel="noopener noreferrer"
-   style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%);
+   style="display:none; position:fixed; bottom:16px; left:50%; transform:translateX(-50%);
           background:#0f1720; color:#ff9900; padding:10px 18px; border-radius:12px;
           font-weight:700; text-decoration:none; font-size:16px; box-shadow:0 4px 12px rgba(0,0,0,0.4);
           transition: all 0.2s ease; z-index:9999;">
@@ -98,8 +98,9 @@
 </a>
 
 <script>
-  // Hover para botón flotante
   const btn = document.getElementById("openAmazon");
+
+  // Hover effect
   btn.addEventListener("mouseenter", () => {
     btn.style.background = "#ff9900";
     btn.style.color = "#000";
@@ -108,6 +109,11 @@
     btn.style.background = "#0f1720";
     btn.style.color = "#ff9900";
   });
+
+  // Mostrar botón solo en PWA instalada
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    btn.style.display = "inline-block";
+  }
 
   // Registrar Service Worker
   if('serviceWorker' in navigator){
