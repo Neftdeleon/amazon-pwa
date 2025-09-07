@@ -1,0 +1,48 @@
+:root{
+  --bg:#0f1720;
+  --accent:#ff9900;
+  --muted:#94a3b8;
+  --white:#ffffff;
+}
+
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:var(--bg);color:var(--white);text-align:center;}
+.container{max-width:500px;margin:0 auto;padding:28px 16px;}
+.header{display:flex;flex-direction:column;align-items:center;margin-bottom:18px;}
+.perfil{width:128px;height:128px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.06);}
+.header h1{margin:12px 0 6px 0;font-size:22px;}
+.bio{color:var(--muted);font-size:14px;margin-bottom:12px;text-align:center;max-width:100%;}
+
+/* LINKS HORIZONTALES CIRCULARES */
+.links{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.btn.circle{
+  width:60px;
+  height:60px;
+  background:var(--accent);
+  color:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:24px;
+  text-decoration:none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn.circle:hover{
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255,153,0,0.6);
+}
+
+/* RESPONSIVE */
+@media (max-width:420px){
+  .perfil{width:100px;height:100px;}
+  .btn.circle{width:50px;height:50px;font-size:20px;}
+}
