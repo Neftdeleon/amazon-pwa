@@ -39,16 +39,29 @@ html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Seg
   box-shadow:0 4px 12px rgba(255,153,0,0.6);
 }
 
-/* PRODUCTOS AMAZON */
+/* PRODUCTOS AMAZON SIMPLIFICADOS */
 .productos{margin-top:22px;}
 .productos h2{text-align:center;margin-bottom:12px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6);}
-.product-img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:10px;}
-.card-body h3{margin:6px 0;font-size:16px;}
-.card-body .small{color:var(--muted);font-size:13px;margin-bottom:8px;}
-.card .product{display:inline-block;background:var(--accent);color:#000;padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:700;}
-.note{color:var(--muted);font-size:13px;text-align:center;margin-top:12px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:6px;
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.product-img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:8px;}
+.btn.product{
+  display:inline-block;
+  background:var(--accent);
+  color:#000;
+  padding:6px 10px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+}
 
 /* FOOTER */
 .footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px;}
@@ -57,5 +70,5 @@ html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Seg
 @media(max-width:420px){
   .perfil{width:100px;height:100px;}
   .btn.circle{width:50px;height:50px;font-size:20px;}
-  .product-img{height:160px;}
+  .product-img{height:120px;}
 }
