@@ -26,8 +26,20 @@ body{
 .cta{display:flex;justify-content:center;margin:12px 0}
 .btn{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--card);color:var(--white);text-decoration:none;margin:8px 6px;font-weight:600;border:1px solid rgba(255,255,255,0.02)}
 .btn.primary{background:linear-gradient(90deg,var(--accent),#ff6a00);color:#000}
-.links{display:flex;flex-direction:column;align-items:center;margin-top:6px}
-.links .btn{width:100%;max-width:360px;text-align:center}
+
+/* --- LINKS HORIZONTALES --- */
+.links{
+  display: flex;           /* Flex horizontal */
+  justify-content: center; /* Centra los botones */
+  gap: 12px;               /* Espacio entre botones */
+  flex-wrap: wrap;         /* Si la pantalla es pequeña, que bajen a otra fila */
+  margin-top:6px;
+}
+.links .btn{
+  min-width:100px;         /* Ancho mínimo uniforme */
+  text-align:center;
+  width:auto;              /* Para que no ocupe todo el ancho */
+}
 
 .productos{margin-top:22px}
 .productos h2{text-align:center;margin-bottom:12px}
@@ -42,4 +54,10 @@ body{
 .footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
 .footer .social-mini a{color:var(--muted);margin:0 8px;text-decoration:none}
 
-@media (max-width:420px){.product-img{height:160px}.perfil{width:100px;height:100px}}
+@media (max-width:420px){
+  .product-img{height:160px}
+  .perfil{width:100px;height:100px}
+  .links{
+    gap:8px;            /* Menos espacio en móviles */
+  }
+}
