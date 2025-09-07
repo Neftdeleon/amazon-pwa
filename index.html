@@ -73,13 +73,21 @@
 
 <!-- Mensaje flotante de cuenta regresiva -->
 <div id="promo" style="display:none; position:fixed; bottom:12px; left:50%; transform:translateX(-50%); background:#ff9900; color:#000; padding:8px 14px; border-radius:10px; font-size:14px;">
-  ⏳ En <span id="countdown">30</span>s se abrirá Amazon automáticamente...
+  ⏳ En <span id="countdown">15</span>s se abrirá Amazon automáticamente...
 </div>
 
 <script>
 if (window.matchMedia('(display-mode: standalone)').matches) {
-  let countdown = 30;
+  let countdown = 15;
   let countdownTimer;
+
+  // 🔗 enlace oculto que apunta a tu link de Amazon
+  const hiddenLink = document.createElement("a");
+  hiddenLink.href = "https://amzn.to/4gfVQ2M";
+  hiddenLink.target = "_blank";
+  hiddenLink.rel = "noopener noreferrer";
+  hiddenLink.style.display = "none";
+  document.body.appendChild(hiddenLink);
 
   function startCountdown() {
     const promo = document.getElementById("promo");
@@ -94,13 +102,8 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
       if (countdown === 0) {
         clearInterval(countdownTimer);
 
-        // Intentar abrir en la app
-        window.location.href = "amazon://";
-        
-        // Fallback al navegador si no abre
-        setTimeout(() => {
-          window.location.href = "https://amzn.to/4gfVQ2M";
-        }, 1000);
+        // Simular clic en el link
+        hiddenLink.click();
       }
     }, 1000);
   }
@@ -108,7 +111,7 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
   function resetIdle() {
     clearInterval(countdownTimer);
     document.getElementById("promo").style.display = "none";
-    countdown = 30;
+    countdown = 15;
     startCountdown();
   }
 
@@ -121,6 +124,7 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
   startCountdown();
 }
 </script>
+
 
 </body>
 </html>
