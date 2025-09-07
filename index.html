@@ -20,56 +20,50 @@
   <!-- LINKS SOCIALES -->
   <section class="links" aria-label="Enlaces principales">
     <a class="btn circle" href="https://www.instagram.com/neftdeleon/" target="_blank" rel="noopener noreferrer">📸</a>
-  <!--  <a class="btn circle" href="https://tiktok.com/@tuusuario" target="_blank" rel="noopener noreferrer">🎥</a>
-    <a class="btn circle" href="https://youtube.com/tuusuario" target="_blank" rel="noopener noreferrer">▶️</a>-->
+    <!-- <a class="btn circle" href="https://tiktok.com/@tuusuario" target="_blank" rel="noopener noreferrer">🎥</a>
+    <a class="btn circle" href="https://youtube.com/tuusuario" target="_blank" rel="noopener noreferrer">▶️</a> -->
     <a class="btn circle" href="https://wa.me/+18099076826" target="_blank" rel="noopener noreferrer">💬</a>
   </section>
 
   <!-- SECCIÓN PRODUCTOS AMAZON -->
- <section id="productos" class="productos">
-  <h2>🎒 Productos recomendados</h2>
-  <div class="grid">
+  <section id="productos" class="productos">
+    <h2>🎒 Productos recomendados</h2>
+    <div class="grid">
 
-    <article class="card">
-      <img src="https://m.media-amazon.com/images/I/51H7fuLwzYL._AC_SL1500_.jpg" alt="Mochila" class="product-img">
-      <a class="btn product" href="https://amzn.to/47PwR4n" target="_blank" rel="noopener noreferrer">Comprar</a>
-    </article>
+      <article class="card">
+        <img src="https://m.media-amazon.com/images/I/51H7fuLwzYL._AC_SL1500_.jpg" alt="Mochila" class="product-img">
+        <a class="btn product" href="https://amzn.to/47PwR4n" target="_blank" rel="noopener noreferrer">Comprar</a>
+      </article>
 
-    <article class="card">
-      <img src="https://m.media-amazon.com/images/I/81YsgHZvKmL._AC_SL1500_.jpg" alt="Cámara" class="product-img">
-      <a class="btn product" href="https://amzn.to/46aYAtA" target="_blank" rel="noopener noreferrer">Comprar</a>
-    </article>
+      <article class="card">
+        <img src="https://m.media-amazon.com/images/I/81YsgHZvKmL._AC_SL1500_.jpg" alt="Cámara" class="product-img">
+        <a class="btn product" href="https://amzn.to/46aYAtA" target="_blank" rel="noopener noreferrer">Comprar</a>
+      </article>
 
-    <article class="card">
-      <img src="https://m.media-amazon.com/images/I/81IzkXEug4L._AC_SX425_.jpg" alt="Tienda de camping" class="product-img">
-      <a class="btn product" href="https://amzn.to/4m7GMW5" target="_blank" rel="noopener noreferrer">Comprar</a>
-    </article>
+      <article class="card">
+        <img src="https://m.media-amazon.com/images/I/81IzkXEug4L._AC_SX425_.jpg" alt="Tienda de camping" class="product-img">
+        <a class="btn product" href="https://amzn.to/4m7GMW5" target="_blank" rel="noopener noreferrer">Comprar</a>
+      </article>
 
-    <article class="card">
-      <img src="https://m.media-amazon.com/images/I/51+oheESugL._AC_SY300_SX300_QL70_FMwebp_.jpg" alt="Tienda de camping" class="product-img">
-      <a class="btn product" href="https://amzn.to/3Id1GFx" target="_blank" rel="noopener noreferrer">Comprar</a>
-    </article>
+      <article class="card">
+        <img src="https://m.media-amazon.com/images/I/51+oheESugL._AC_SY300_SX300_QL70_FMwebp_.jpg" alt="Tienda de camping" class="product-img">
+        <a class="btn product" href="https://amzn.to/3Id1GFx" target="_blank" rel="noopener noreferrer">Comprar</a>
+      </article>
 
-<article class="card">
-      <img src="https://m.media-amazon.com/images/I/816tqlcZkPL._AC_SX569_.jpg" alt="Tienda de camping" class="product-img">
-      <a class="btn product" href="https://amzn.to/3V52i2U" target="_blank" rel="noopener noreferrer">Comprar</a>
-    </article>
+      <article class="card">
+        <img src="https://m.media-amazon.com/images/I/816tqlcZkPL._AC_SX569_.jpg" alt="Tienda de camping" class="product-img">
+        <a class="btn product" href="https://amzn.to/3V52i2U" target="_blank" rel="noopener noreferrer">Comprar</a>
+      </article>
 
-<article class="card">
-      <img src="https://m.media-amazon.com/images/I/719NvYMAsIL._AC_SX425_.jpg" alt="Tienda de camping" class="product-img">
-      <a class="btn product" href="https://amzn.to/42cfHKm" target="_blank" rel="noopener noreferrer">Comprar</a>
-    </article>
-
-
-
-
-
-  </div>
-</section>
+      <article class="card">
+        <img src="https://m.media-amazon.com/images/I/719NvYMAsIL._AC_SX425_.jpg" alt="Tienda de camping" class="product-img">
+        <a class="btn product" href="https://amzn.to/42cfHKm" target="_blank" rel="noopener noreferrer">Comprar</a>
+      </article>
 
     </div>
-    <p class="note">*Si compras a través de estos enlaces, recibo una comisión que ayuda a mantener el contenido. ¡Gracias por apoyar mis aventuras! 💚</p>
   </section>
+
+  <p class="note">*Si compras a través de estos enlaces, recibo una comisión que ayuda a mantener el contenido. ¡Gracias por apoyar mis aventuras! 💚</p>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -77,19 +71,20 @@
   </footer>
 </main>
 
-<script>
-  // Registrar service worker
-  if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('service-worker.js')
-    .then(()=>console.log('Service worker registrado'))
-    .catch(err=>console.warn('SW fallo', err));
-
 <!-- Mensaje flotante de cuenta regresiva -->
 <div id="promo" style="display:none; position:fixed; bottom:12px; left:50%; transform:translateX(-50%); background:#ff9900; color:#000; padding:8px 14px; border-radius:10px; font-size:14px;">
   ⏳ En <span id="countdown">30</span>s se abrirá Amazon automáticamente...
 </div>
 
 <script>
+  // Registrar service worker
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('service-worker.js')
+      .then(()=>console.log('Service worker registrado'))
+      .catch(err=>console.warn('SW fallo', err));
+  }
+
+  // Lógica de inactividad + redirección
   if (window.matchMedia('(display-mode: standalone)').matches) {
     let idleTimer, countdownTimer;
     let countdown = 30;
@@ -124,9 +119,6 @@
     );
 
     resetIdle();
-  }
-</script>
-
   }
 </script>
 </body>
