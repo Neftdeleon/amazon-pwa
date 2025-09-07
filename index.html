@@ -1,60 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso Directo Amazon</title>
-    
-    <link rel="manifest" href="/amazon-pwa/manifest.json">
-    <link rel="apple-touch-icon" href="/amazon-pwa/images/icon-192.png">
-    <meta name="theme-color" content="#FF9900"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neftalí | Aventuras & Afiliados</title>
+  <meta name="description" content="Explorador de la República Dominicana 🌴 | Equipo, mochilas y gadgets recomendados en Amazon (con mis enlaces de afiliado)." />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+  <meta property="og:title" content="Neftalí - Kit de Aventura" />
+  <meta property="og:description" content="Mira mis recomendaciones para senderismo, camping y fotografía." />
+  <meta property="og:image" content="/amazon-pwa/images/avatar-192.png" />
+  <meta property="og:url" content="https://neftdeleon.github.io/amazon-pwa/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="manifest" href="/amazon-pwa/manifest.json" />
+  <link rel="stylesheet" href="/amazon-pwa/style.css" />
+  <script>
+    // Registro temprano del service worker si está disponible
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/amazon-pwa/service-worker.js').then(function(reg){
+        console.log('Service worker registrado.', reg);
+      }).catch(function(err){
+        console.warn('Service worker fallo:', err);
+      });
+    }
+  </script>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body>
+  <main class="container">
+    <header class="header">
+      <img src="/amazon-pwa/images/perfil.jpg" alt="Foto perfil" class="perfil" />
+      <h1>@nefteleon</h1>
+      <p class="bio">Explorador de la República Dominicana 🌴 | Aventuras, camping y gadgets que uso y recomiendo.</p>
+    </header>
 
-    <div class="bg-white rounded-2xl shadow-xl p-8 max-w-sm w-full mx-4" id="main-content">
-        <h1 class="text-3xl font-bold text-gray-800 mb-4">Acceso Directo Amazon</h1>
-        <p class="text-gray-600 mb-6">Toca el botón para ir a la app de Amazon.</p>
-        
-        <div class="flex justify-center mb-6">
-            <svg class="animate-spin -ml-1 mr-3 h-10 w-10 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-        </div>
+    <section class="cta">
+      <a class="btn primary" href="#productos">👉 Descubre mi kit de aventura</a>
+    </section>
 
-        <a id="redirectButton" href="https://amzn.to/3JQW6ZS" target="_blank" class="mt-4 inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200">
-            Ir a Amazon
-        </a>
-    </div>
+    <section class="links" aria-label="Enlaces principales">
+      <a class="btn" href="https://instagram.com/tuusuario" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+      <a class="btn" href="https://tiktok.com/@tuusuario" target="_blank" rel="noopener noreferrer">🎥 TikTok</a>
+      <a class="btn" href="https://youtube.com/tuusuario" target="_blank" rel="noopener noreferrer">▶️ YouTube</a>
+      <a class="btn" href="https://wa.me/18095551234" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const shortUrl = 'https://amzn.to/3JQW6ZS';
-            const redirectButton = document.getElementById('redirectButton');
+    <section id="productos" class="productos">
+      <h2>🎒 Mis recomendados en Amazon</h2>
 
-            if (window.matchMedia('(display-mode: standalone)').matches) {
-                // Si está instalada como PWA, redirige automáticamente
-                window.location.href = shortUrl;
-            } else {
-                // Si no está instalada, se queda en la página con el botón
-                redirectButton.href = shortUrl;
-            }
-        });
-    </script>
+      <div class="grid">
+        <article class="card">
+          <img src="https://m.media-amazon.com/images/I/81Zt42ioCgL._AC_SX679_.jpg" alt="Mochila" class="product-img" />
+          <div class="card-body">
+            <h3>Mochila de Senderismo</h3>
+            <p class="small">Ligera, resistente y con soporte lumbar.</p>
+            <a class="btn product" href="https://www.amazon.com/dp/PRODUCTO1?tag=TU-ID-AFILIADO-20" target="_blank" rel="noopener noreferrer" data-asin="PRODUCTO1">Comprar en Amazon</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://m.media-amazon.com/images/I/71hEzQECpNL._AC_SX679_.jpg" alt="Cámara" class="product-img" />
+          <div class="card-body">
+            <h3>Cámara de Acción</h3>
+            <p class="small">Compacta, 4K, ideal para viajes.</p>
+            <a class="btn product" href="https://www.amazon.com/dp/PRODUCTO2?tag=TU-ID-AFILIADO-20" target="_blank" rel="noopener noreferrer" data-asin="PRODUCTO2">Comprar en Amazon</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://m.media-amazon.com/images/I/91u4FxzI9nL._AC_SX679_.jpg" alt="Tienda" class="product-img" />
+          <div class="card-body">
+            <h3>Tienda de Camping</h3>
+            <p class="small">Fácil montaje, resistente al viento.</p>
+            <a class="btn product" href="https://www.amazon.com/dp/PRODUCTO3?tag=TU-ID-AFILIADO-20" target="_blank" rel="noopener noreferrer" data-asin="PRODUCTO3">Comprar en Amazon</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="note">*Si compras a través de estos enlaces, recibo una pequeña comisión que ayuda a mantener el contenido. ¡Gracias por apoyar mis aventuras! 💚</p>
+    </section>
+
+    <footer class="footer">
+      <div class="social-mini">
+        <a href="https://instagram.com/tuusuario" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://tiktok.com/@tuusuario" target="_blank" rel="noopener noreferrer">TikTok</a>
+      </div>
+      <p class="copyright">© 2025 Neftalí</p>
+    </footer>
+  </main>
+
+  <script>
+    function appendUTM(url, source) {
+      try {
+        const u = new URL(url);
+        u.searchParams.set('utm_source', source);
+        u.searchParams.set('utm_medium', 'link_in_bio');
+        return u.toString();
+      } catch (e) {
+        return url;
+      }
+    }
+
+    document.querySelectorAll('a.product').forEach(a => {
+      a.href = appendUTM(a.href, 'instagram');
+      a.addEventListener('click', () => {
+        console.log('Click registrado (local):', a.dataset.asin || a.href);
+      });
+    });
+  </script>
 </body>
 </html>
