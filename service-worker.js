@@ -1,11 +1,11 @@
 const CACHE_NAME = 'neftaleon-cache-v1';
 const FILES_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/images/perfil.jpg',
-  '/images/icon-192.png',
-  '/images/icon-512.png'
+  './',
+  './index.html',
+  './style.css',
+  './images/perfil.jpg',
+  './images/icon-192.png',
+  './images/icon-512.png'
 ];
 
 self.addEventListener('install', evt => {
@@ -33,27 +33,22 @@ self.addEventListener('activate', evt => {
 });
 
 self.addEventListener('fetch', evt => {
-  // Manejar solo las solicitudes GET
-  if (evt.request.method !== 'GET') {
-    return;
-  }
+  if (evt.request.method !== 'GET') return;
 
-  // Si la solicitud es para la raíz, sirve siempre index.html desde la caché
-  if (evt.request.mode === 'navigate' && evt.request.url.includes(self.location.origin + '/')) {
+  // Manejar navegación
+  if (evt.request.mode === 'navigate') {
     evt.respondWith(
-      caches.match('/index.html')
-      .then(response => {
+      caches.match('./index.html').then(response => {
         return response || fetch(evt.request);
       })
     );
     return;
   }
 
-  // Estrategia de caché-first para otros archivos
+  // Cache-first
   evt.respondWith(
-    caches.match(evt.request)
-      .then(response => {
-        return response || fetch(evt.request);
-      })
+    caches.match(evt.request).then(response => {
+      return response || fetch(evt.request);
+    })
   );
 });
