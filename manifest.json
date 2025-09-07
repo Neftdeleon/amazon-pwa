@@ -1,7 +1,7 @@
 {
   "name": "Neftalí Aventuras",
   "short_name": "Neftdeleon",
-  "start_url": "/",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#071013",
   "theme_color": "#ff9900",
