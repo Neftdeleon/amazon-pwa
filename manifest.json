@@ -1,12 +1,12 @@
 {
   "name": "Neftalí Aventuras",
-  "short_name": "Neftalí",
+  "short_name": "Neftdeleon",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#071013",
   "theme_color": "#ff9900",
   "icons": [
-    {"src":"images/avatar-192.png","sizes":"192x192","type":"image/png"},
-    {"src":"images/avatar-512.png","sizes":"512x512","type":"image/png"}
+    {"src":"images/icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"images/icon-512.png","sizes":"512x512","type":"image/png"}
   ]
 }
